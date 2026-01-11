@@ -1,0 +1,82 @@
+{
+  "name": "@aivec/magi-lp-template",
+  "version": "1.1.0",
+  "description": "LP template components for React - Import design data from Claude and generate landing pages",
+  "type": "module",
+  "files": [
+    "design",
+    "docs",
+    "scripts",
+    "src",
+    ".env.example",
+    ".gitignore",
+    "index.html",
+    "tailwind.preset.js",
+    "tsconfig.json",
+    "vite.config.lib.ts",
+    "vite.config.ts"
+  ],
+  "keywords": [
+    "react",
+    "landing-page",
+    "lp",
+    "template",
+    "components",
+    "claude",
+    "ai",
+    "design-data",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "bugs": {
+    "url": ""
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "*",
+    "lucide-react": "^0.487.0",
+    "tailwind-merge": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "sharp": "^0.33.4",
+    "typescript": "^5.6.0",
+    "vite": "6.3.5",
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:demo": "npm run optimize:images && vite build && npm run inject:all",
+    "optimize:images": "node ./scripts/optimize-images.mjs",
+    "convert:images": "node ./scripts/convert-img-to-picture.mjs",
+    "inject:meta": "node ./scripts/inject-meta-html.mjs",
+    "inject:analytics": "node ./scripts/inject-analytics-html.mjs",
+    "inject:all": "npm run inject:meta && npm run inject:analytics && npm run convert:images",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir build/server",
+    "build:ssg": "npm run build:demo && npm run build:ssr && node ./scripts/prerender.mjs",
+    "build:production": "npm run optimize:images && npm run build:ssg",
+    "typecheck": "tsc --noEmit"
+  }
+}

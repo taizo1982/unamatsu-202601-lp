@@ -1,0 +1,170 @@
+
+  <!DOCTYPE html>
+  <html lang="ja">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>MAGI LP Template</title>
+      <meta name="description" content="IBE CONNECT（アイビーコネクト）は滋賀県の婚活支援サービスです。恋するクリスマストレインなどのイベント情報や婚活サポート情報を提供しています。" />
+      <link rel="icon" href="/img/favicon.ico">
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": "恋するクリスマストレイン 〜縁結びの旅へ〜",
+          "description": "近江鉄道とアイビーコネクトが共催する冬限定の婚活イベント。彦根駅からクリスマストレインに乗り込み、トレイントークや多賀大社前での食べ歩きツアー、縁結びスタンプラリーなどを楽しみながら真剣な出会いをサポートします。",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "startDate": "2025-12-21T13:00:00+09:00",
+          "endDate": "2025-12-21T16:30:00+09:00",
+          "location": {
+            "@type": "Place",
+            "name": "近江鉄道 彦根駅",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "彦根市",
+              "addressRegion": "滋賀県",
+              "addressCountry": "JP"
+            }
+          },
+          "image": [
+            "assets/2927b6ac43f0939a85bca96267f3fa2a187c2bd2-BDW-wJy7.png",
+            "assets/79b7f76b05327330e4471728394604adcb07148d-CTofJz5g.png"
+          ],
+          "maximumAttendeeCapacity": 24,
+          "typicalAgeRange": "30-40",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "男性チケット",
+              "price": "6000",
+              "priceCurrency": "JPY",
+              "availability": "https://schema.org/InStock",
+              "url": "https://ibeconnect.net/party/detail/?e=261"
+            },
+            {
+              "@type": "Offer",
+              "name": "女性チケット",
+              "price": "3000",
+              "priceCurrency": "JPY",
+              "availability": "https://schema.org/InStock",
+              "url": "https://ibeconnect.net/party/detail/?e=261"
+            }
+          ],
+          "organizer": {
+            "@type": "Organization",
+            "name": "アイビーコネクト",
+            "url": "https://ibeconnect.net/",
+            "logo": "assets/b29d72b932bc03012c283d26e62b9d662d1c5861-DmoBDvK6.png",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "telephone": "+819062311582",
+              "availableLanguage": [
+                "ja"
+              ],
+              "hoursAvailable": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "https://schema.org/Monday",
+                    "https://schema.org/Tuesday",
+                    "https://schema.org/Wednesday",
+                    "https://schema.org/Thursday",
+                    "https://schema.org/Friday",
+                    "https://schema.org/Saturday",
+                    "https://schema.org/Sunday"
+                  ],
+                  "opens": "10:00",
+                  "closes": "20:00"
+                }
+              ]
+            }
+          },
+          "sponsor": [
+            {
+              "@type": "Organization",
+              "name": "近江鉄道"
+            }
+          ],
+          "sameAs": [
+            "https://ibeconnect.net/party/detail/?e=261"
+          ],
+      "inLanguage": "ja"
+        }
+      </script>
+      <script type="module">
+        if (import.meta.env.DEV) {
+          const sanitize = (value) => {
+            if (typeof value !== "string") return "";
+            const trimmed = value.trim();
+            return trimmed && trimmed !== "undefined" ? trimmed : "";
+          };
+
+          const gaMeasurementId = sanitize(import.meta.env.VITE_GA_MEASUREMENT_ID);
+          const gaAdsId = sanitize(import.meta.env.VITE_GA_ADS_ID);
+          const metaPixelId = sanitize(import.meta.env.VITE_META_PIXEL_ID);
+          const metaAppId = sanitize(import.meta.env.VITE_META_APP_ID);
+
+          if (gaMeasurementId || gaAdsId) {
+            const primaryId = gaMeasurementId || gaAdsId;
+            const gtagScript = document.createElement("script");
+            gtagScript.async = true;
+            gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(primaryId);
+            document.head.appendChild(gtagScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+            window.gtag = gtag;
+            gtag("js", new Date());
+
+            if (gaMeasurementId) {
+              gtag("config", gaMeasurementId);
+            }
+
+            if (gaAdsId) {
+              gtag("config", gaAdsId);
+            }
+          }
+
+          if (metaPixelId) {
+            !(function (f, b, e, v, n, t, s) {
+              if (f.fbq) return;
+              n = f.fbq = function () {
+                if (n.callMethod) {
+                  n.callMethod.apply(n, arguments);
+                } else {
+                  n.queue.push(arguments);
+                }
+              };
+              if (!f._fbq) f._fbq = n;
+              n.push = n;
+              n.loaded = true;
+              n.version = "2.0";
+              n.queue = [];
+              t = b.createElement(e);
+              t.async = true;
+              t.src = v;
+              s = b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t, s);
+            })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+            if (metaAppId) {
+              window.fbq("init", metaPixelId, { app_id: metaAppId });
+            } else {
+              window.fbq("init", metaPixelId);
+            }
+            window.fbq("track", "PageView");
+          }
+        }
+      </script>
+    </head>
+
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+    </body>
+  </html>
+  
