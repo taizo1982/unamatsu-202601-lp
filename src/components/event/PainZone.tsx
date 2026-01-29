@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
-import painImageAvif from "../../assets/6fe7d929f4abf0a9fc915a7c7ebcc30fcf034131.avif";
-import painImageWebp from "../../assets/6fe7d929f4abf0a9fc915a7c7ebcc30fcf034131.webp";
-import painImagePng from "../../assets/6fe7d929f4abf0a9fc915a7c7ebcc30fcf034131.png";
+import painImageAvif from "../../../design/feature-unagi.avif";
+import painImageWebp from "../../../design/feature-unagi.webp";
+import painImageJpg from "../../../design/feature-unagi.jpg";
 
 export function PainZone() {
   const pains = [
@@ -38,7 +38,7 @@ export function PainZone() {
                 <source srcSet={painImageAvif} type="image/avif" />
                 <source srcSet={painImageWebp} type="image/webp" />
                 <img
-                  src={painImagePng}
+                  src={painImageJpg}
                   alt="悩む人"
                   className="w-full h-64 object-cover"
                 />

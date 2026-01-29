@@ -1,9 +1,9 @@
 import { Button } from "../ui/button";
 import { Calendar, MapPin, Users, Coins, Clock, Gift, Train } from "lucide-react";
 import { PARTY_DETAIL_URL } from "../../constants";
-import trainImageAvif from "../../assets/79b7f76b05327330e4471728394604adcb07148d.avif";
-import trainImageWebp from "../../assets/79b7f76b05327330e4471728394604adcb07148d.webp";
-import trainImagePng from "../../assets/79b7f76b05327330e4471728394604adcb07148d.png";
+import trainImageAvif from "../../../design/feature-hitsumabushi.avif";
+import trainImageWebp from "../../../design/feature-hitsumabushi.webp";
+import trainImageJpg from "../../../design/feature-hitsumabushi.jpg";
 
 export function EventOffer() {
   const schedule = [
@@ -122,7 +122,7 @@ export function EventOffer() {
               <source srcSet={trainImageAvif} type="image/avif" />
               <source srcSet={trainImageWebp} type="image/webp" />
               <img
-                src={trainImagePng}
+                src={trainImageJpg}
                 alt="近江鉄道 恋するクリスマストレイン"
                 className="w-full h-auto object-contain"
               />

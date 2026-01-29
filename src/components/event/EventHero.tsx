@@ -1,11 +1,11 @@
 import { Button } from "../ui/button";
 import { PARTY_DETAIL_URL } from "../../constants";
-import heroImageAvif from "../../assets/2927b6ac43f0939a85bca96267f3fa2a187c2bd2.avif";
-import heroImageWebp from "../../assets/2927b6ac43f0939a85bca96267f3fa2a187c2bd2.webp";
-import heroImagePng from "../../assets/2927b6ac43f0939a85bca96267f3fa2a187c2bd2.png";
-import titleImageAvif from "../../assets/c29107eecdbb8d2af774d123974ff110ca535933.avif";
-import titleImageWebp from "../../assets/c29107eecdbb8d2af774d123974ff110ca535933.webp";
-import titleImagePng from "../../assets/c29107eecdbb8d2af774d123974ff110ca535933.png";
+import heroImageAvif from "../../../design/hero-onigiri.avif";
+import heroImageWebp from "../../../design/hero-onigiri.webp";
+import heroImageJpg from "../../../design/hero-onigiri.jpg";
+import titleImageAvif from "../../../design/unamatsu_logo_wh.avif";
+import titleImageWebp from "../../../design/unamatsu_logo_wh.webp";
+import titleImagePng from "../../../design/unamatsu_logo_wh.png";
 
 export function EventHero() {
   return (
@@ -16,7 +16,7 @@ export function EventHero() {
           <source srcSet={heroImageAvif} type="image/avif" />
           <source srcSet={heroImageWebp} type="image/webp" />
           <img 
-            src={heroImagePng}
+            src={heroImageJpg}
             alt="列車で出会うカップル"
             className="w-full h-full object-cover object-top"
           />

@@ -1,8 +1,8 @@
 import { Button } from "./ui/button";
 import { Heart, CheckCircle } from "lucide-react";
-import heroImageAvif from "../assets/7c2373c068f4d4ae4b150044e0aa9c6cbb95cbab.avif";
-import heroImageWebp from "../assets/7c2373c068f4d4ae4b150044e0aa9c6cbb95cbab.webp";
-import heroImagePng from "../assets/7c2373c068f4d4ae4b150044e0aa9c6cbb95cbab.png";
+import heroImageAvif from "../../design/hero-onigiri.avif";
+import heroImageWebp from "../../design/hero-onigiri.webp";
+import heroImagePng from "../../design/hero-onigiri.jpg";
 
 interface HeroSectionProps {
   onCTAClick: (ctaType: string) => void;

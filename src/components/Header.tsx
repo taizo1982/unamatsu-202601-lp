@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
-import logoAvif from "../assets/b29d72b932bc03012c283d26e62b9d662d1c5861.avif";
-import logoWebp from "../assets/b29d72b932bc03012c283d26e62b9d662d1c5861.webp";
-import logoPng from "../assets/b29d72b932bc03012c283d26e62b9d662d1c5861.png";
+import logoAvif from "../../design/unamatsu_logo.avif";
+import logoWebp from "../../design/unamatsu_logo.webp";
+import logoPng from "../../design/unamatsu_logo.png";
 
 interface HeaderProps {
   onCTAClick: (ctaType: string) => void;
