@@ -61,13 +61,23 @@
 }
 
 .unamatsu-lp .header-logo img {
-  height: 70px;
+  height: 28px;
   width: auto;
   transition: all 0.4s var(--ease-out-expo);
 }
 
 .unamatsu-lp .header.scrolled .header-logo img {
-  height: 50px;
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  .unamatsu-lp .header-logo img {
+    height: 40px;
+  }
+
+  .unamatsu-lp .header.scrolled .header-logo img {
+    height: 32px;
+  }
 }
 
 .unamatsu-lp .header-nav {
@@ -1049,13 +1059,22 @@
 }
 
 .unamatsu-lp .closing-catch {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-family: var(--font-mincho);
   font-size: clamp(1.75rem, 5vw, 3rem);
   font-weight: 700;
   color: var(--color-brown-dark);
   line-height: 1.5;
   letter-spacing: 0.08em;
+  word-break: keep-all;
+  text-wrap: balance;
   margin-bottom: 32px;
+}
+
+.unamatsu-lp .closing-catch .closing-line {
+  display: block;
 }
 
 .unamatsu-lp .closing-catch .accent {
@@ -1069,8 +1088,15 @@
   margin-bottom: 16px;
 }
 
+.unamatsu-lp .closing-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
 .unamatsu-lp .closing-date {
-  display: inline-block;
   font-family: var(--font-mincho);
   font-size: 1rem;
   font-weight: 500;
@@ -1078,7 +1104,11 @@
   letter-spacing: 0.2em;
   padding: 16px 40px;
   border: 1px solid var(--color-gold);
-  margin-bottom: 48px;
+  margin: 0;
+}
+
+.unamatsu-lp .closing-cta .btn-line {
+  margin: 0;
 }
 
 /* ==================== FOOTER ==================== */
@@ -1095,9 +1125,10 @@
 }
 
 .unamatsu-lp .footer-logo {
+  display: block;
   height: 120px;
   width: auto;
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
   opacity: 0.9;
 }
 

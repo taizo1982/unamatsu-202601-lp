@@ -5,6 +5,7 @@ import heroJpg from '../design/hero-onigiri.jpg';
 import logoWhAvif from '../design/unamatsu_logo_wh.avif';
 import logoWhWebp from '../design/unamatsu_logo_wh.webp';
 import logoWhPng from '../design/unamatsu_logo_wh.png';
+import logoYokoWhPng from '../design/unamatsu_logo_yoko_wh.png';
 import featureUnagiAvif from '../design/feature-unagi.avif';
 import featureUnagiWebp from '../design/feature-unagi.webp';
 import featureUnagiJpg from '../design/feature-unagi.jpg';
@@ -61,11 +62,7 @@ export default function App() {
       <header className={`header ${headerScrolled ? 'scrolled' : ''}`}>
         <div className="header-inner">
           <div className="header-logo">
-            <picture>
-              <source srcSet={logoWhAvif} type="image/avif" />
-              <source srcSet={logoWhWebp} type="image/webp" />
-              <img src={logoWhPng} alt="うな松" />
-            </picture>
+            <img src={logoYokoWhPng} alt="うな松" />
           </div>
           <nav className="header-nav">
             <a href="tel:077-516-4013" className="header-tel">
@@ -94,7 +91,7 @@ export default function App() {
         <div className="hero-content">
           <span className="hero-badge">2026.2.1 START</span>
           <h1 className="hero-catch">
-            <span className="price">350<span>円</span></span>
+            <span className="price">350<span>円 / 1個</span></span>
             なのに、ちゃんと鰻。
           </h1>
           <p className="hero-sub">
@@ -239,7 +236,7 @@ export default function App() {
           <div className="spec-card scroll-fade">
             <div className="spec-card-header">
               <p className="spec-card-name">うな松特製鰻おにぎり</p>
-              <p className="spec-card-price">350<span>円（税込）</span></p>
+              <p className="spec-card-price">350<span>円（税込）/ 1個</span></p>
             </div>
             <div className="spec-card-body">
               <ul className="spec-list">
@@ -355,19 +352,21 @@ export default function App() {
       <section className="closing">
         <div className="closing-inner">
           <h2 className="closing-catch scroll-fade">
-            <span className="accent">350円</span>なのに、ちゃんと鰻。<br />
-            そして、二度美味しい。
+            <span className="closing-line"><span className="accent">350円</span>なのに、ちゃんと鰻。</span>
+            <span className="closing-line">そして、二度美味しい。</span>
           </h2>
           <p className="closing-text scroll-fade">
             ご予約・ご注文は、公式LINEからどうぞ。
           </p>
-          <p className="closing-date scroll-fade">2026年2月1日 販売開始</p>
-          <a href={LINE_URL} className="btn-line scroll-fade">
+          <div className="closing-cta scroll-fade">
+            <p className="closing-date">2026年2月1日 販売開始</p>
+            <a href={LINE_URL} className="btn-line">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
             </svg>
             LINE公式アカウントを追加する
-          </a>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -393,7 +392,7 @@ export default function App() {
       <div className={`floating-cta ${floatingVisible ? 'visible' : ''}`}>
         <div className="floating-cta-inner">
           <div className="floating-cta-text">
-            <p className="floating-cta-price">350円<span>（税込）</span></p>
+            <p className="floating-cta-price">350円<span>（税込）/ 1個</span></p>
             <p className="floating-cta-sub">鰻おにぎり｜お吸い物付き</p>
           </div>
           <a href={LINE_URL} className="floating-cta-btn">
