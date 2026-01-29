@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Kaisei+Opti:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -26,13 +26,12 @@
       --color-white: #fffefa;
       --color-line: #06C755;
       --color-line-hover: #05b34c;
+      --color-accent: #c41e3a;
 
-      --font-serif: 'Noto Serif JP', 'Shippori Mincho', serif;
-      --font-mincho: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --font-mincho: 'Zen Old Mincho', serif;
+      --font-body: 'Kaisei Opti', serif;
 
-      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
-      --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.12);
-      --shadow-gold: 0 4px 20px rgba(201, 162, 39, 0.2);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -47,165 +46,12 @@
     }
 
     body {
-      font-family: var(--font-serif);
+      font-family: var(--font-body);
       background-color: var(--color-cream);
       color: var(--color-charcoal);
       line-height: 1.9;
-      letter-spacing: 0.05em;
-      overflow-x: hidden;
-    }
-
-    /* Utility Classes */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section {
-      padding: 80px 0;
-      position: relative;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        padding: 60px 0;
-      }
-    }
-
-    /* Japanese Pattern Backgrounds */
-    .pattern-seigaiha {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath fill='%23c9a227' fill-opacity='0.03' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.52A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.75zM.07 0h20.1A20 20 0 0 1 .07 0z'/%3E%3C/svg%3E");
-    }
-
-    .pattern-asanoha {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23c9a227' fill-opacity='0.04' d='M12 0l12 12-12 12L0 12 12 0zm0 2.83L2.83 12 12 21.17 21.17 12 12 2.83z'/%3E%3C/svg%3E");
-    }
-
-    /* Decorative Elements */
-    .gold-line {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-      margin: 0 auto;
-    }
-
-    .gold-line-left {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--color-gold), transparent);
-    }
-
-    .section-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 40px 0;
-    }
-
-    .section-divider::before,
-    .section-divider::after {
-      content: '';
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-gold-light), transparent);
-    }
-
-    .section-divider-icon {
-      width: 8px;
-      height: 8px;
-      background: var(--color-gold);
-      transform: rotate(45deg);
-    }
-
-    /* Typography */
-    .heading-display {
-      font-family: var(--font-mincho);
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: 0.1em;
-    }
-
-    .heading-section {
-      font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 600;
-      line-height: 1.5;
       letter-spacing: 0.08em;
-      margin-bottom: 24px;
-    }
-
-    .heading-sub {
-      font-family: var(--font-serif);
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      color: var(--color-gold);
-      margin-bottom: 8px;
-    }
-
-    .text-vertical {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-    }
-
-    /* Buttons */
-    .btn-line {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: var(--color-line);
-      color: white;
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 18px 40px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(6, 199, 85, 0.3);
-    }
-
-    .btn-line:hover {
-      background: var(--color-line-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(6, 199, 85, 0.4);
-    }
-
-    .btn-line svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--color-brown);
-      font-family: var(--font-serif);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      padding: 14px 32px;
-      border: 1px solid var(--color-brown-light);
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      background: var(--color-brown);
-      color: var(--color-cream);
-      border-color: var(--color-brown);
+      overflow-x: hidden;
     }
 
     /* ==================== HEADER ==================== */
@@ -215,605 +61,617 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(250, 246, 239, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(201, 162, 39, 0.1);
-      transition: all 0.3s ease;
+      padding: 20px 32px;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .header.scrolled {
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 12px 32px;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 24px;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
-    .header-logo {
-      font-family: var(--font-mincho);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--color-brown-dark);
-      letter-spacing: 0.1em;
+    .header-logo img {
+      height: 70px;
+      width: auto;
+      transition: all 0.4s var(--ease-out-expo);
     }
 
-    .header-logo span {
-      color: var(--color-gold);
+    .header.scrolled .header-logo img {
+      height: 50px;
     }
 
-    .header-cta {
+    .header-logo-dark {
+      display: none;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header-tel {
       display: none;
     }
 
     @media (min-width: 768px) {
-      .header-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--color-line);
-        color: white;
-        font-size: 0.85rem;
-        font-weight: 600;
-        padding: 10px 20px;
-        border-radius: 25px;
+      .header-tel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        color: var(--color-cream);
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s;
       }
 
-      .header-cta:hover {
-        background: var(--color-line-hover);
+      .header-tel:hover {
+        opacity: 0.8;
       }
 
-      .header-cta svg {
-        width: 18px;
-        height: 18px;
+      .header-tel-number {
+        font-family: var(--font-mincho);
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+      }
+
+      .header-tel-time {
+        font-size: 0.7rem;
+        opacity: 0.7;
       }
     }
 
-    /* ==================== HERO SECTION ==================== */
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-line);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 12px 24px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .header-cta:hover {
+      background: var(--color-line-hover);
+      transform: translateY(-2px);
+    }
+
+    .header-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ==================== HERO ==================== */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-brown-dark) 100%);
+      background: var(--color-charcoal);
       overflow: hidden;
-      padding-top: 60px;
     }
 
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23c9a227' fill-opacity='0.03' d='M50 0L100 50 50 100 0 50z'/%3E%3C/svg%3E");
-      opacity: 0.5;
-    }
-
-    .hero-inner {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 24px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .hero-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        padding: 60px 40px;
-      }
+      background: linear-gradient(
+        135deg,
+        rgba(26, 26, 26, 0.9) 0%,
+        rgba(26, 26, 26, 0.4) 50%,
+        rgba(26, 26, 26, 0.6) 100%
+      );
     }
 
     .hero-content {
-      text-align: center;
-      order: 2;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 120px 24px 80px;
     }
 
     @media (min-width: 768px) {
       .hero-content {
-        text-align: left;
-        order: 1;
+        padding: 0 60px;
+        max-width: 1400px;
+        margin: 0 auto;
       }
     }
 
     .hero-badge {
       display: inline-block;
-      background: var(--color-gold);
-      color: var(--color-charcoal);
+      font-family: var(--font-mincho);
       font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      padding: 6px 16px;
-      border-radius: 2px;
-      margin-bottom: 24px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold);
+      padding: 10px 24px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.2s forwards;
     }
 
     .hero-catch {
       font-family: var(--font-mincho);
-      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-size: clamp(2.5rem, 10vw, 7rem);
       font-weight: 900;
       color: var(--color-cream);
-      line-height: 1.2;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeSlideUp 1s var(--ease-out-expo) 0.4s forwards;
     }
 
-    .hero-catch .accent {
-      color: var(--color-gold);
+    .hero-catch .price {
+      display: block;
+      color: var(--color-accent);
+      font-size: clamp(4rem, 15vw, 12rem);
+      line-height: 0.9;
+    }
+
+    .hero-catch .price span {
+      font-size: 0.3em;
+      color: var(--color-gold-light);
+      vertical-align: middle;
     }
 
     .hero-sub {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-family: var(--font-mincho);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
       color: var(--color-gold-pale);
-      line-height: 1.8;
-      margin-bottom: 32px;
-      opacity: 0.9;
-    }
-
-    .hero-product-name {
-      font-family: var(--font-mincho);
-      font-size: 1.1rem;
-      color: var(--color-gold-light);
-      letter-spacing: 0.2em;
-      margin-bottom: 8px;
-    }
-
-    .hero-price {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    @media (min-width: 768px) {
-      .hero-price {
-        justify-content: flex-start;
-      }
-    }
-
-    .hero-price-number {
-      font-family: var(--font-mincho);
-      font-size: clamp(3rem, 10vw, 4.5rem);
-      font-weight: 900;
-      color: var(--color-gold);
-      line-height: 1;
-    }
-
-    .hero-price-unit {
-      font-size: 1.25rem;
-      color: var(--color-gold-light);
+      line-height: 2;
+      letter-spacing: 0.15em;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeSlideUp 1s var(--ease-out-expo) 0.6s forwards;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
-
-    @media (min-width: 768px) {
-      .hero-meta {
-        justify-content: flex-start;
-      }
+      gap: 24px;
+      opacity: 0;
+      animation: fadeSlideUp 1s var(--ease-out-expo) 0.8s forwards;
     }
 
     .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       font-size: 0.85rem;
-      color: var(--color-cream-dark);
+      color: var(--color-cream);
       opacity: 0.8;
+      letter-spacing: 0.1em;
     }
 
-    .hero-meta-item svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--color-gold);
+    .hero-meta-item::before {
+      content: '―';
+      margin-right: 8px;
+      color: var(--color-gold);
     }
 
-    .hero-image {
-      position: relative;
-      order: 1;
-    }
-
-    @media (min-width: 768px) {
-      .hero-image {
-        order: 2;
-      }
-    }
-
-    .hero-image-main {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-medium), 0 0 60px rgba(201, 162, 39, 0.15);
-    }
-
-    .hero-image-main::before {
-      content: '';
+    .hero-scroll {
       position: absolute;
-      inset: 0;
-      border: 1px solid rgba(201, 162, 39, 0.3);
-      border-radius: 8px;
-      pointer-events: none;
-      z-index: 1;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: var(--color-gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out-expo) 1.2s forwards;
     }
 
-    .hero-image-main img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .hero-scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--color-gold), transparent);
+      animation: scrollLine 1.5s ease-in-out infinite;
     }
 
-    .hero-vertical-text {
-      display: none;
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.5; }
     }
 
-    @media (min-width: 1024px) {
-      .hero-vertical-text {
-        display: block;
-        position: absolute;
-        right: -60px;
-        top: 50%;
-        transform: translateY(-50%);
-        writing-mode: vertical-rl;
-        font-family: var(--font-mincho);
-        font-size: 0.85rem;
-        letter-spacing: 0.3em;
-        color: var(--color-gold);
-        opacity: 0.6;
-      }
-    }
-
-    /* ==================== CONCEPT SECTION ==================== */
+    /* ==================== CONCEPT ==================== */
     .concept {
+      padding: 120px 24px;
       background: var(--color-cream);
       position: relative;
     }
 
+    @media (min-width: 768px) {
+      .concept {
+        padding: 180px 60px;
+      }
+    }
+
     .concept-inner {
-      text-align: center;
-      max-width: 640px;
+      max-width: 900px;
       margin: 0 auto;
+    }
+
+    .concept-vertical {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: var(--font-mincho);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      position: absolute;
+      top: 120px;
+      right: 24px;
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .concept-vertical {
+        display: block;
+        right: 60px;
+      }
     }
 
     .concept-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 5vw, 2.25rem);
+      font-size: clamp(1.75rem, 5vw, 3rem);
       font-weight: 700;
       color: var(--color-brown-dark);
+      line-height: 1.6;
       letter-spacing: 0.1em;
-      margin-bottom: 40px;
-      position: relative;
+      margin-bottom: 48px;
+      text-align: center;
     }
 
     .concept-heading::after {
       content: '';
       display: block;
-      width: 40px;
-      height: 2px;
+      width: 1px;
+      height: 60px;
       background: var(--color-gold);
-      margin: 24px auto 0;
+      margin: 40px auto 0;
     }
 
     .concept-text {
       font-size: 1rem;
       color: var(--color-brown);
-      line-height: 2.2;
-    }
-
-    .concept-text p {
-      margin-bottom: 24px;
-    }
-
-    .concept-text p:last-child {
-      margin-bottom: 0;
+      line-height: 2.4;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .concept-highlight {
+      display: block;
       font-family: var(--font-mincho);
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: var(--color-brown-dark);
+      margin-top: 32px;
     }
 
-    /* ==================== FEATURE SECTIONS ==================== */
+    /* ==================== FEATURE ==================== */
     .feature {
       position: relative;
+      overflow: hidden;
     }
 
-    .feature-dark {
-      background: linear-gradient(180deg, var(--color-charcoal) 0%, var(--color-brown-dark) 100%);
-      color: var(--color-cream);
-    }
-
-    .feature-light {
-      background: var(--color-cream-dark);
-    }
-
-    .feature-inner {
+    .feature-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
+      min-height: 100vh;
     }
 
-    @media (min-width: 768px) {
-      .feature-inner {
+    @media (min-width: 1024px) {
+      .feature-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
       }
-    }
-
-    .feature-content {
-      order: 2;
     }
 
     .feature-image {
-      order: 1;
+      position: relative;
+      min-height: 50vh;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .feature-image {
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+      }
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out-expo);
+    }
+
+    .feature:hover .feature-image img {
+      transform: scale(1.05);
+    }
+
+    .feature-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 32px;
+      background: var(--color-charcoal);
     }
 
     @media (min-width: 768px) {
-      .feature-reverse .feature-content {
-        order: 1;
-      }
-
-      .feature-reverse .feature-image {
-        order: 2;
+      .feature-content {
+        padding: 100px 80px;
       }
     }
 
     .feature-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-family: var(--font-mincho);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.4em;
       color: var(--color-gold);
-      margin-bottom: 12px;
+      margin-bottom: 24px;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .feature-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 24px;
+      height: 1px;
+      background: var(--color-gold);
     }
 
     .feature-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: 0.08em;
-      margin-bottom: 24px;
-    }
-
-    .feature-dark .feature-heading {
       color: var(--color-cream);
-    }
-
-    .feature-light .feature-heading {
-      color: var(--color-brown-dark);
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
     }
 
     .feature-text {
       font-size: 0.95rem;
-      line-height: 2;
+      color: var(--color-gold-pale);
+      line-height: 2.2;
       opacity: 0.9;
     }
 
-    .feature-dark .feature-text {
-      color: var(--color-gold-pale);
+    .feature-alt .feature-content {
+      background: var(--color-cream);
     }
 
-    .feature-light .feature-text {
+    .feature-alt .feature-heading {
+      color: var(--color-brown-dark);
+    }
+
+    .feature-alt .feature-text {
       color: var(--color-brown);
     }
 
-    .feature-image-wrapper {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-medium);
+    @media (min-width: 1024px) {
+      .feature-alt .feature-image {
+        order: 2;
+      }
     }
 
-    .feature-image-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(201, 162, 39, 0.2);
-      border-radius: 8px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .feature-image-wrapper img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ==================== HOW TO EAT SECTION ==================== */
+    /* ==================== HOWTO ==================== */
     .howto {
-      background: var(--color-cream);
+      padding: 120px 24px;
+      background: var(--color-brown-dark);
       position: relative;
     }
 
-    .howto::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='%23c9a227' fill-opacity='0.02' d='M30 0L60 30 30 60 0 30z'/%3E%3C/svg%3E");
+    @media (min-width: 768px) {
+      .howto {
+        padding: 160px 60px;
+      }
     }
 
     .howto-inner {
-      position: relative;
-      max-width: 700px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .howto-header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 80px;
+    }
+
+    .howto-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      margin-bottom: 16px;
     }
 
     .howto-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-weight: 700;
-      color: var(--color-brown-dark);
-      letter-spacing: 0.1em;
-    }
-
-    .howto-heading::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 2px;
-      background: var(--color-gold);
-      margin: 20px auto 0;
+      color: var(--color-cream);
+      letter-spacing: 0.15em;
     }
 
     .howto-steps {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 32px;
     }
 
+    @media (min-width: 768px) {
+      .howto-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+      }
+    }
+
     .howto-step {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 24px;
-      align-items: start;
-      background: var(--color-white);
-      padding: 32px;
-      border-radius: 8px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(201, 162, 39, 0.1);
-    }
-
-    .howto-step-number {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .howto-step-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--color-gold);
+      position: relative;
+      padding: 48px 40px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 162, 39, 0.2);
     }
 
     .howto-step-num {
+      position: absolute;
+      top: -20px;
+      left: 40px;
       font-family: var(--font-mincho);
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 4rem;
+      font-weight: 900;
       color: var(--color-gold);
+      opacity: 0.3;
       line-height: 1;
     }
 
-    .howto-step-content h4 {
+    .howto-step-title {
       font-family: var(--font-mincho);
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      color: var(--color-brown-dark);
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      color: var(--color-cream);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
     }
 
-    .howto-step-content p {
+    .howto-step-text {
       font-size: 0.9rem;
-      color: var(--color-brown);
-      line-height: 1.8;
+      color: var(--color-gold-pale);
+      line-height: 1.9;
+      opacity: 0.8;
     }
 
     .howto-note {
-      margin-top: 32px;
-      padding: 20px;
-      background: rgba(201, 162, 39, 0.08);
-      border-radius: 4px;
-      border-left: 3px solid var(--color-gold);
-    }
-
-    .howto-note p {
+      margin-top: 60px;
+      text-align: center;
       font-size: 0.85rem;
-      color: var(--color-brown);
-      line-height: 1.8;
-      margin-bottom: 4px;
+      color: var(--color-gold-light);
+      opacity: 0.7;
     }
 
-    .howto-note p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ==================== TARGET SECTION ==================== */
+    /* ==================== TARGET ==================== */
     .target {
-      background: linear-gradient(180deg, var(--color-brown-dark) 0%, var(--color-charcoal) 100%);
-      color: var(--color-cream);
+      padding: 120px 24px;
+      background: var(--color-cream);
+    }
+
+    @media (min-width: 768px) {
+      .target {
+        padding: 160px 60px;
+      }
     }
 
     .target-inner {
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
+    }
+
+    .target-header {
       text-align: center;
+      margin-bottom: 64px;
     }
 
     .target-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
       font-weight: 600;
-      color: var(--color-gold-light);
-      letter-spacing: 0.1em;
-      margin-bottom: 40px;
+      color: var(--color-brown-dark);
+      letter-spacing: 0.15em;
     }
 
     .target-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      text-align: left;
+      gap: 1px;
+      background: rgba(201, 162, 39, 0.2);
     }
 
     .target-item {
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 24px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 4px;
-      border: 1px solid rgba(201, 162, 39, 0.15);
+      align-items: center;
+      gap: 24px;
+      padding: 28px 32px;
+      background: var(--color-cream);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .target-item:hover {
+      background: var(--color-white);
+      padding-left: 40px;
     }
 
     .target-item-icon {
       flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-gold);
+      width: 8px;
+      height: 8px;
+      background: var(--color-gold);
+      transform: rotate(45deg);
     }
 
     .target-item-text {
       font-size: 0.95rem;
-      color: var(--color-cream-dark);
-      line-height: 1.7;
+      color: var(--color-brown);
+      letter-spacing: 0.05em;
     }
 
     .target-note {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: var(--color-gold-light);
-      opacity: 0.8;
+      margin-top: 48px;
+      text-align: center;
+      font-family: var(--font-mincho);
+      font-size: 1rem;
+      color: var(--color-gold);
+      letter-spacing: 0.1em;
     }
 
-    /* ==================== PRODUCT SPEC SECTION ==================== */
+    /* ==================== SPEC ==================== */
     .spec {
-      background: var(--color-cream);
+      padding: 120px 24px;
+      background: var(--color-charcoal);
+    }
+
+    @media (min-width: 768px) {
+      .spec {
+        padding: 160px 60px;
+      }
     }
 
     .spec-inner {
@@ -823,61 +681,61 @@
 
     .spec-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 64px;
+    }
+
+    .spec-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      margin-bottom: 16px;
     }
 
     .spec-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 4vw, 1.75rem);
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
-      color: var(--color-brown-dark);
-      letter-spacing: 0.1em;
+      color: var(--color-cream);
+      letter-spacing: 0.15em;
     }
 
     .spec-card {
-      background: var(--color-white);
-      border-radius: 8px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(201, 162, 39, 0.15);
+      border: 1px solid rgba(201, 162, 39, 0.3);
       overflow: hidden;
     }
 
     .spec-card-header {
-      background: linear-gradient(135deg, var(--color-brown-dark) 0%, var(--color-charcoal) 100%);
-      padding: 24px;
+      padding: 48px 40px;
       text-align: center;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.3);
     }
 
     .spec-card-name {
       font-family: var(--font-mincho);
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--color-gold);
-      letter-spacing: 0.15em;
-      margin-bottom: 8px;
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
     }
 
     .spec-card-price {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .spec-card-price-num {
       font-family: var(--font-mincho);
-      font-size: 2.5rem;
+      font-size: 4rem;
       font-weight: 900;
       color: var(--color-cream);
+      line-height: 1;
     }
 
-    .spec-card-price-unit {
+    .spec-card-price span {
       font-size: 1rem;
-      color: var(--color-cream-dark);
+      font-weight: 400;
+      color: var(--color-gold-pale);
+      margin-left: 8px;
     }
 
     .spec-card-body {
-      padding: 32px;
+      padding: 40px;
     }
 
     .spec-list {
@@ -887,90 +745,109 @@
     .spec-list li {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(201, 162, 39, 0.1);
-      font-size: 0.95rem;
-      color: var(--color-brown);
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+      font-size: 0.9rem;
+      color: var(--color-gold-pale);
+      letter-spacing: 0.05em;
     }
 
     .spec-list li:last-child {
       border-bottom: none;
     }
 
-    .spec-list li svg {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
+    .spec-list li::before {
+      content: '✓';
       color: var(--color-gold);
+      font-size: 0.8rem;
     }
 
     .spec-note {
-      margin-top: 16px;
-      padding: 16px;
-      background: rgba(201, 162, 39, 0.08);
-      border-radius: 4px;
-      font-size: 0.85rem;
-      color: var(--color-brown);
+      margin-top: 32px;
+      padding: 20px;
+      background: rgba(201, 162, 39, 0.1);
+      font-size: 0.8rem;
+      color: var(--color-gold-light);
       text-align: center;
+      letter-spacing: 0.05em;
     }
 
-    /* ==================== SHOP SECTION ==================== */
+    /* ==================== SHOP ==================== */
     .shop {
+      padding: 120px 24px;
       background: var(--color-cream-dark);
     }
 
+    @media (min-width: 768px) {
+      .shop {
+        padding: 160px 60px;
+      }
+    }
+
     .shop-inner {
-      max-width: 700px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .shop-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 64px;
+    }
+
+    .shop-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      margin-bottom: 16px;
     }
 
     .shop-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 4vw, 1.75rem);
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
       color: var(--color-brown-dark);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
     }
 
-    .shop-card {
-      background: var(--color-white);
-      border-radius: 8px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(201, 162, 39, 0.15);
+    .shop-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .shop-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+      }
+    }
+
+    .shop-image {
+      position: relative;
       overflow: hidden;
     }
 
-    .shop-card-image {
+    .shop-image img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .shop-card-body {
-      padding: 32px;
+      height: auto;
+      display: block;
     }
 
     .shop-name {
       font-family: var(--font-mincho);
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--color-brown-dark);
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
-      text-align: center;
+      letter-spacing: 0.15em;
+      margin-bottom: 32px;
     }
 
     .shop-info {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
     .shop-info-row {
@@ -978,11 +855,14 @@
       grid-template-columns: 100px 1fr;
       gap: 16px;
       font-size: 0.9rem;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.15);
     }
 
     .shop-info-label {
       font-weight: 600;
       color: var(--color-brown-dark);
+      letter-spacing: 0.05em;
     }
 
     .shop-info-value {
@@ -990,89 +870,132 @@
       line-height: 1.7;
     }
 
+    .shop-info-value a {
+      color: var(--color-brown);
+      text-decoration: none;
+    }
+
     .shop-payment {
-      padding: 20px;
-      background: rgba(201, 162, 39, 0.05);
-      border-radius: 4px;
-      margin-bottom: 24px;
+      padding: 24px;
+      background: var(--color-white);
+      margin-bottom: 32px;
     }
 
     .shop-payment-title {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--color-brown-dark);
+      letter-spacing: 0.1em;
       margin-bottom: 12px;
     }
 
-    .shop-payment-list {
+    .shop-payment-text {
       font-size: 0.8rem;
       color: var(--color-brown);
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
-    .shop-map-btn {
-      display: flex;
-      justify-content: center;
+    .btn-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-brown);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 16px 32px;
+      border: 1px solid var(--color-brown);
+      text-decoration: none;
+      transition: all 0.3s var(--ease-out-expo);
     }
 
-    /* ==================== LINE CTA SECTION ==================== */
+    .btn-map:hover {
+      background: var(--color-brown);
+      color: var(--color-cream);
+    }
+
+    .btn-map svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ==================== LINE CTA ==================== */
     .line-cta {
-      background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-brown-dark) 100%);
+      padding: 120px 24px;
+      background: linear-gradient(180deg, var(--color-charcoal) 0%, var(--color-brown-dark) 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .line-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath fill='%23c9a227' fill-opacity='0.03' d='M40 0L80 40 40 80 0 40z'/%3E%3C/svg%3E");
+    @media (min-width: 768px) {
+      .line-cta {
+        padding: 160px 60px;
+      }
     }
 
     .line-cta-inner {
-      position: relative;
-      max-width: 700px;
+      max-width: 1000px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .line-cta-header {
       text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .line-cta-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      margin-bottom: 16px;
     }
 
     .line-cta-heading {
       font-family: var(--font-mincho);
-      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-size: clamp(1.25rem, 4vw, 2rem);
       font-weight: 600;
       color: var(--color-cream);
-      letter-spacing: 0.08em;
-      margin-bottom: 40px;
+      letter-spacing: 0.1em;
+      line-height: 1.6;
     }
 
     .line-benefits {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
-      margin-bottom: 48px;
-      text-align: left;
+      gap: 24px;
+      margin-bottom: 64px;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
       .line-benefits {
         grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
       }
     }
 
     .line-benefit {
-      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 32px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(201, 162, 39, 0.2);
-      border-radius: 8px;
-      padding: 24px;
+      text-align: center;
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .line-benefit:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px);
     }
 
     .line-benefit-num {
       font-family: var(--font-mincho);
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      font-weight: 900;
       color: var(--color-gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
+      opacity: 0.5;
+      margin-bottom: 16px;
     }
 
     .line-benefit-title {
@@ -1080,104 +1003,163 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--color-cream);
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
     }
 
     .line-benefit-desc {
       font-size: 0.8rem;
       color: var(--color-gold-pale);
-      line-height: 1.7;
+      line-height: 1.8;
       opacity: 0.8;
     }
 
+    .line-cta-action {
+      text-align: center;
+    }
+
     .line-cta-note {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--color-gold-light);
       margin-bottom: 24px;
+      letter-spacing: 0.1em;
     }
 
-    .line-cta-buttons {
-      display: flex;
-      flex-direction: column;
+    .btn-line {
+      display: inline-flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      gap: 12px;
+      background: var(--color-line);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 20px 48px;
+      border: none;
+      text-decoration: none;
+      transition: all 0.3s var(--ease-out-expo);
     }
 
-    /* ==================== CLOSING SECTION ==================== */
+    .btn-line:hover {
+      background: var(--color-line-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(6, 199, 85, 0.3);
+    }
+
+    .btn-line svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ==================== CLOSING ==================== */
     .closing {
+      padding: 120px 24px;
       background: var(--color-cream);
       text-align: center;
     }
 
+    @media (min-width: 768px) {
+      .closing {
+        padding: 160px 60px;
+      }
+    }
+
     .closing-inner {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .closing-catch {
       font-family: var(--font-mincho);
-      font-size: clamp(1.5rem, 5vw, 2.25rem);
+      font-size: clamp(1.75rem, 5vw, 3rem);
       font-weight: 700;
       color: var(--color-brown-dark);
-      letter-spacing: 0.08em;
       line-height: 1.5;
-      margin-bottom: 24px;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
     }
 
     .closing-catch .accent {
-      color: var(--color-gold);
+      color: var(--color-accent);
     }
 
     .closing-text {
       font-size: 0.95rem;
       color: var(--color-brown);
-      line-height: 1.9;
+      line-height: 2;
       margin-bottom: 16px;
     }
 
     .closing-date {
+      display: inline-block;
       font-family: var(--font-mincho);
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--color-gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 40px;
+      letter-spacing: 0.2em;
+      padding: 16px 40px;
+      border: 1px solid var(--color-gold);
+      margin-bottom: 48px;
     }
 
     /* ==================== FOOTER ==================== */
     .footer {
+      padding: 80px 24px 140px;
       background: var(--color-charcoal);
-      color: var(--color-cream-dark);
-      padding: 48px 24px 120px;
       text-align: center;
     }
 
     @media (min-width: 768px) {
       .footer {
-        padding-bottom: 48px;
+        padding: 100px 60px;
       }
     }
 
     .footer-logo {
-      font-family: var(--font-mincho);
-      font-size: 1.1rem;
-      font-weight: 600;
+      height: 120px;
+      width: auto;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    .footer-tel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       color: var(--color-gold);
-      letter-spacing: 0.15em;
-      margin-bottom: 16px;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .footer-tel-number {
+      font-family: var(--font-mincho);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-tel-time {
+      font-size: 0.75rem;
+      color: var(--color-cream-dark);
+      opacity: 0.6;
+      margin-bottom: 24px;
     }
 
     .footer-address {
       font-size: 0.8rem;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-bottom: 24px;
+      color: var(--color-cream-dark);
+      line-height: 2;
+      opacity: 0.6;
+      margin-bottom: 32px;
     }
 
     .footer-copy {
       font-size: 0.7rem;
-      opacity: 0.5;
+      color: var(--color-cream-dark);
+      opacity: 0.4;
+      letter-spacing: 0.1em;
     }
 
     /* ==================== FLOATING CTA ==================== */
@@ -1188,11 +1170,11 @@
       right: 0;
       z-index: 99;
       background: rgba(26, 26, 26, 0.98);
-      backdrop-filter: blur(10px);
-      padding: 12px 16px;
-      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      backdrop-filter: blur(20px);
+      padding: 16px 20px;
+      border-top: 1px solid rgba(201, 162, 39, 0.3);
       transform: translateY(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s var(--ease-out-expo);
     }
 
     .floating-cta.visible {
@@ -1210,36 +1192,45 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .floating-cta-text {
-      font-size: 0.8rem;
-      color: var(--color-cream);
-      line-height: 1.4;
+      flex: 1;
     }
 
-    .floating-cta-text strong {
-      display: block;
+    .floating-cta-price {
       font-family: var(--font-mincho);
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--color-gold);
-      font-size: 0.9rem;
+    }
+
+    .floating-cta-price span {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--color-cream);
+      margin-left: 4px;
+    }
+
+    .floating-cta-sub {
+      font-size: 0.7rem;
+      color: var(--color-cream-dark);
+      opacity: 0.8;
     }
 
     .floating-cta-btn {
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--color-line);
       color: white;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 14px 20px;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: background 0.3s;
     }
 
     .floating-cta-btn:hover {
@@ -1247,15 +1238,15 @@
     }
 
     .floating-cta-btn svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
 
     /* ==================== ANIMATIONS ==================== */
-    @keyframes fadeInUp {
+    @keyframes fadeSlideUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -1268,28 +1259,13 @@
       to { opacity: 1; }
     }
 
-    .animate-fade-in-up {
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
-
-    /* Scroll animations */
-    .scroll-animate {
+    .scroll-fade {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
     }
 
-    .scroll-animate.visible {
+    .scroll-fade.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1297,351 +1273,275 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
+  <header class="header" id="header">
     <div class="header-inner">
-      <div class="header-logo">うな<span>松</span></div>
-      <a href="#line-cta" class="header-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-        </svg>
-        LINE登録
-      </a>
+      <div class="header-logo">
+        <img src="unamatsu_logo_wh.png" alt="うな松">
+      </div>
+      <nav class="header-nav">
+        <a href="tel:077-516-4013" class="header-tel">
+          <span class="header-tel-number">077-516-4013</span>
+          <span class="header-tel-time">受付 10:00〜14:00</span>
+        </a>
+        <a href="#line-cta" class="header-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+          LINE登録
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <span class="hero-badge animate-fade-in">2026.2.1 販売開始</span>
-        <h1 class="hero-catch animate-fade-in-up delay-1">
-          <span class="accent">350円</span>なのに、<br>ちゃんと鰻。
-        </h1>
-        <p class="hero-sub animate-fade-in-up delay-2">
-          お吸い物をかければ、ひつまぶし風。<br>
-          二度楽しめる、鰻おにぎり。
-        </p>
-        <p class="hero-product-name animate-fade-in-up delay-3">うな松特製鰻おにぎり</p>
-        <div class="hero-price animate-fade-in-up delay-3">
-          <span class="hero-price-number">350</span>
-          <span class="hero-price-unit">円（税込）</span>
-        </div>
-        <div class="hero-meta animate-fade-in-up delay-4">
-          <span class="hero-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            2026年2月1日発売
-          </span>
-          <span class="hero-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            テイクアウト専用
-          </span>
-        </div>
+    <div class="hero-bg">
+      <img src="hero-onigiri.jpg" alt="うな松特製鰻おにぎり">
+    </div>
+    <div class="hero-content">
+      <span class="hero-badge">2026.2.1 START</span>
+      <h1 class="hero-catch">
+        <span class="price">350<span>円</span></span>
+        なのに、ちゃんと鰻。
+      </h1>
+      <p class="hero-sub">
+        お吸い物をかければ、ひつまぶし風。<br>
+        二度楽しめる、鰻おにぎり。
+      </p>
+      <div class="hero-meta">
+        <span class="hero-meta-item">2026年2月1日発売</span>
+        <span class="hero-meta-item">テイクアウト専用</span>
+        <span class="hero-meta-item">お吸い物付き</span>
       </div>
-      <div class="hero-image">
-        <div class="hero-image-main animate-fade-in delay-2">
-          <img src="https://placehold.co/600x500/3d2e1f/c9a227?text=鰻おにぎり" alt="うな松特製鰻おにぎり">
-        </div>
-        <span class="hero-vertical-text">UNAMATSU ONIGIRI</span>
-      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
-  <!-- Concept Section -->
-  <section class="concept section pattern-seigaiha">
-    <div class="container">
-      <div class="concept-inner scroll-animate">
-        <h2 class="concept-heading">鰻屋が、本気で作りました。</h2>
-        <div class="concept-text">
-          <p>「鰻は好きだけど、ちょっと高い。」<br>
-          そんな声に応えたくて、鰻専門店が本気で考えました。</p>
-          <p class="concept-highlight">手軽に。でも、妥協はしない。<br>
-          それが、うな松特製鰻おにぎりです。</p>
-        </div>
-      </div>
+  <!-- Concept -->
+  <section class="concept">
+    <div class="concept-vertical">鰻専門店の矜持</div>
+    <div class="concept-inner">
+      <h2 class="concept-heading scroll-fade">
+        鰻屋が、本気で作りました。
+      </h2>
+      <p class="concept-text scroll-fade">
+        「鰻は好きだけど、ちょっと高い。」<br>
+        そんな声に応えたくて、鰻専門店が本気で考えました。
+        <span class="concept-highlight">
+          手軽に。でも、妥協はしない。<br>
+          それが、うな松特製鰻おにぎりです。
+        </span>
+      </p>
     </div>
   </section>
 
   <!-- Feature 1 -->
-  <section class="feature feature-dark section">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content scroll-animate">
-          <span class="feature-label">まずはそのまま</span>
-          <h2 class="feature-heading">ちゃんと、鰻の存在感。</h2>
-          <p class="feature-text">
-            炊き立てのご飯に、特製のタレと鰻を混ぜ込み、鰻をドンと乗せました。<br><br>
-            ご飯との相性を考え抜いた、鰻おにぎり専用の味付けです。<br><br>
-            一口目から、「これは、ちゃんと鰻だ。」<br>
-            そう感じていただける仕上がりです。
-          </p>
-        </div>
-        <div class="feature-image scroll-animate">
-          <div class="feature-image-wrapper">
-            <img src="https://placehold.co/500x400/2d2d2d/c9a227?text=鰻の存在感" alt="鰻の存在感">
-          </div>
-        </div>
+  <section class="feature">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="feature-unagi.jpg" alt="鰻の存在感">
+      </div>
+      <div class="feature-content">
+        <span class="feature-label">TASTE 01</span>
+        <h2 class="feature-heading scroll-fade">
+          ちゃんと、<br>鰻の存在感。
+        </h2>
+        <p class="feature-text scroll-fade">
+          炊き立てのご飯に、特製のタレと鰻を混ぜ込み、鰻をドンと乗せました。<br><br>
+          ご飯との相性を考え抜いた、鰻おにぎり専用の味付けです。<br><br>
+          一口目から、「これは、ちゃんと鰻だ。」<br>
+          そう感じていただける仕上がりです。
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Feature 2 -->
-  <section class="feature feature-light section feature-reverse">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content scroll-animate">
-          <span class="feature-label">かければ、ひつまぶし風</span>
-          <h2 class="feature-heading">実は、二度美味しい。</h2>
-          <p class="feature-text">
-            うな松特製鰻おにぎりは、付属のお吸い物をかけるだけで、ひつまぶし風としてもお楽しみいただけます。<br><br>
-            ・最初は、そのまま鰻おにぎりで<br>
-            ・途中から、お吸い物をかけてさっぱりと<br><br>
-            一つで二通りの味わい。この満足感で、350円です。
-          </p>
+  <section class="feature feature-alt">
+    <div class="feature-grid">
+      <div class="feature-image">
+        <img src="feature-hitsumabushi.jpg" alt="ひつまぶし風">
+      </div>
+      <div class="feature-content">
+        <span class="feature-label">TASTE 02</span>
+        <h2 class="feature-heading scroll-fade">
+          実は、<br>二度美味しい。
+        </h2>
+        <p class="feature-text scroll-fade">
+          うな松特製鰻おにぎりは、付属のお吸い物をかけるだけで、ひつまぶし風としてもお楽しみいただけます。<br><br>
+          ・最初は、そのまま鰻おにぎりで<br>
+          ・途中から、お吸い物をかけてさっぱりと<br><br>
+          一つで二通りの味わい。この満足感で、350円です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Eat -->
+  <section class="howto">
+    <div class="howto-inner">
+      <header class="howto-header">
+        <p class="howto-label scroll-fade">HOW TO EAT</p>
+        <h2 class="howto-heading scroll-fade">うな松流・二段階の楽しみ方</h2>
+      </header>
+      <div class="howto-steps">
+        <div class="howto-step scroll-fade">
+          <span class="howto-step-num">01</span>
+          <h3 class="howto-step-title">まずは、そのまま</h3>
+          <p class="howto-step-text">鰻・タレ・ご飯の一体感をお楽しみください。</p>
         </div>
-        <div class="feature-image scroll-animate">
-          <div class="feature-image-wrapper">
-            <img src="https://placehold.co/500x400/f0e9dc/5c4433?text=ひつまぶし風" alt="ひつまぶし風">
-          </div>
+        <div class="howto-step scroll-fade">
+          <span class="howto-step-num">02</span>
+          <h3 class="howto-step-title">お吸い物をかけて</h3>
+          <p class="howto-step-text">旨みが広がる、ひつまぶし風に。</p>
+        </div>
+      </div>
+      <p class="howto-note scroll-fade">
+        ※時間がない方はSTEP1だけでも ／ ゆっくり食べたい方は、ぜひSTEP2まで
+      </p>
+    </div>
+  </section>
+
+  <!-- Target -->
+  <section class="target">
+    <div class="target-inner">
+      <header class="target-header">
+        <h2 class="target-heading scroll-fade">こんな方におすすめ</h2>
+      </header>
+      <div class="target-list">
+        <div class="target-item scroll-fade">
+          <span class="target-item-icon"></span>
+          <span class="target-item-text">講義や仕事の合間に、さっと食べたい方</span>
+        </div>
+        <div class="target-item scroll-fade">
+          <span class="target-item-icon"></span>
+          <span class="target-item-text">小腹を満たしたい午後のひとときに</span>
+        </div>
+        <div class="target-item scroll-fade">
+          <span class="target-item-icon"></span>
+          <span class="target-item-text">鰻は好きだけど、普段はなかなか食べられない方</span>
+        </div>
+        <div class="target-item scroll-fade">
+          <span class="target-item-icon"></span>
+          <span class="target-item-text">ちょっとした差し入れを探している方</span>
+        </div>
+      </div>
+      <p class="target-note scroll-fade">軽食でも、満足感はしっかりあります。</p>
+    </div>
+  </section>
+
+  <!-- Spec -->
+  <section class="spec">
+    <div class="spec-inner">
+      <header class="spec-header">
+        <p class="spec-label scroll-fade">PRODUCT</p>
+        <h2 class="spec-heading scroll-fade">価格・商品仕様</h2>
+      </header>
+      <div class="spec-card scroll-fade">
+        <div class="spec-card-header">
+          <p class="spec-card-name">うな松特製鰻おにぎり</p>
+          <p class="spec-card-price">350<span>円（税込）</span></p>
+        </div>
+        <div class="spec-card-body">
+          <ul class="spec-list">
+            <li>お吸い物付き</li>
+            <li>テイクアウト専用</li>
+            <li>1個からご購入いただけます</li>
+          </ul>
+          <p class="spec-note">※数量限定のため、売り切れ次第終了</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How to Eat Section -->
-  <section class="howto section">
-    <div class="container">
-      <div class="howto-inner">
-        <header class="howto-header scroll-animate">
-          <h2 class="howto-heading">うな松流・二段階の楽しみ方</h2>
-        </header>
-        <div class="howto-steps">
-          <div class="howto-step scroll-animate">
-            <div class="howto-step-number">
-              <span class="howto-step-label">STEP</span>
-              <span class="howto-step-num">1</span>
-            </div>
-            <div class="howto-step-content">
-              <h4>まずは、そのまま</h4>
-              <p>鰻・タレ・ご飯の一体感をお楽しみください。</p>
-            </div>
-          </div>
-          <div class="howto-step scroll-animate">
-            <div class="howto-step-number">
-              <span class="howto-step-label">STEP</span>
-              <span class="howto-step-num">2</span>
-            </div>
-            <div class="howto-step-content">
-              <h4>お吸い物をかけて</h4>
-              <p>旨みが広がる、ひつまぶし風に。</p>
-            </div>
-          </div>
+  <!-- Shop -->
+  <section class="shop">
+    <div class="shop-inner">
+      <header class="shop-header">
+        <p class="shop-label scroll-fade">SHOP</p>
+        <h2 class="shop-heading scroll-fade">店舗情報</h2>
+      </header>
+      <div class="shop-grid">
+        <div class="shop-image scroll-fade">
+          <img src="shop-exterior.png" alt="うな松 店舗外観">
         </div>
-        <div class="howto-note scroll-animate">
-          <p>※時間がない方はSTEP1だけでも</p>
-          <p>※ゆっくり食べたい方は、ぜひSTEP2まで</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Target Section -->
-  <section class="target section">
-    <div class="container">
-      <div class="target-inner">
-        <h2 class="target-heading scroll-animate">こんな方におすすめ</h2>
-        <div class="target-list">
-          <div class="target-item scroll-animate">
-            <span class="target-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 11 12 14 22 4"/>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
-            </span>
-            <span class="target-item-text">講義や仕事の合間に、さっと食べたい方</span>
-          </div>
-          <div class="target-item scroll-animate">
-            <span class="target-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 11 12 14 22 4"/>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
-            </span>
-            <span class="target-item-text">小腹を満たしたい午後のひとときに</span>
-          </div>
-          <div class="target-item scroll-animate">
-            <span class="target-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 11 12 14 22 4"/>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
-            </span>
-            <span class="target-item-text">鰻は好きだけど、普段はなかなか食べられない方</span>
-          </div>
-          <div class="target-item scroll-animate">
-            <span class="target-item-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 11 12 14 22 4"/>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-              </svg>
-            </span>
-            <span class="target-item-text">ちょっとした差し入れを探している方</span>
-          </div>
-        </div>
-        <p class="target-note scroll-animate">軽食でも、満足感はしっかりあります。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Spec Section -->
-  <section class="spec section">
-    <div class="container">
-      <div class="spec-inner">
-        <header class="spec-header scroll-animate">
-          <h2 class="spec-heading">価格・商品仕様</h2>
-        </header>
-        <div class="spec-card scroll-animate">
-          <div class="spec-card-header">
-            <p class="spec-card-name">うな松特製鰻おにぎり</p>
-            <div class="spec-card-price">
-              <span class="spec-card-price-num">350</span>
-              <span class="spec-card-price-unit">円（税込）</span>
+        <div class="shop-content scroll-fade">
+          <h3 class="shop-name">名代 近江鰻処 うな松</h3>
+          <div class="shop-info">
+            <div class="shop-info-row">
+              <span class="shop-info-label">住所</span>
+              <span class="shop-info-value">〒525-0059<br>滋賀県草津市野路8丁目22-6</span>
+            </div>
+            <div class="shop-info-row">
+              <span class="shop-info-label">電話番号</span>
+              <span class="shop-info-value">
+                <a href="tel:077-516-4013">077-516-4013</a><br>
+                <small>受付 10:00〜14:00</small>
+              </span>
+            </div>
+            <div class="shop-info-row">
+              <span class="shop-info-label">営業時間</span>
+              <span class="shop-info-value">11:00〜14:00（L.O. 13:30）</span>
+            </div>
+            <div class="shop-info-row">
+              <span class="shop-info-label">定休日</span>
+              <span class="shop-info-value">不定休</span>
+            </div>
+            <div class="shop-info-row">
+              <span class="shop-info-label">駐車場</span>
+              <span class="shop-info-value">あり</span>
             </div>
           </div>
-          <div class="spec-card-body">
-            <ul class="spec-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                お吸い物付き
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                テイクアウト専用
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                1個からご購入いただけます
-              </li>
-            </ul>
-            <p class="spec-note">※数量限定のため、売り切れ次第終了</p>
+          <div class="shop-payment">
+            <p class="shop-payment-title">お支払い方法</p>
+            <p class="shop-payment-text">
+              クレジットカード / PayPay / au PAY / d払い / 楽天Edy / 交通系IC ほか
+            </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Shop Section -->
-  <section class="shop section">
-    <div class="container">
-      <div class="shop-inner">
-        <header class="shop-header scroll-animate">
-          <h2 class="shop-heading">店舗情報</h2>
-        </header>
-        <div class="shop-card scroll-animate">
-          <img src="https://placehold.co/700x200/3d2e1f/c9a227?text=店舗外観" alt="うな松 店舗外観" class="shop-card-image">
-          <div class="shop-card-body">
-            <h3 class="shop-name">名代 近江鰻処 うな松</h3>
-            <div class="shop-info">
-              <div class="shop-info-row">
-                <span class="shop-info-label">住所</span>
-                <span class="shop-info-value">〒525-0059<br>滋賀県草津市野路8丁目22-6</span>
-              </div>
-              <div class="shop-info-row">
-                <span class="shop-info-label">営業時間</span>
-                <span class="shop-info-value">11:00〜14:00（L.O. 13:30）</span>
-              </div>
-              <div class="shop-info-row">
-                <span class="shop-info-label">定休日</span>
-                <span class="shop-info-value">不定休</span>
-              </div>
-              <div class="shop-info-row">
-                <span class="shop-info-label">駐車場</span>
-                <span class="shop-info-value">あり</span>
-              </div>
-            </div>
-            <div class="shop-payment">
-              <p class="shop-payment-title">お支払い方法</p>
-              <p class="shop-payment-list">
-                <strong>クレジットカード：</strong>American Express / JCB / Diners Club / DISCOVER / VISA<br>
-                <strong>電子マネー・QR決済：</strong>PayPay / au PAY / d払い / 楽天Edy / 交通系ICカード ほか
-              </p>
-            </div>
-            <div class="shop-map-btn">
-              <a href="https://www.google.com/maps/search/名代+近江鰻処+うな松" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                Googleマップで場所を確認する
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LINE CTA Section -->
-  <section id="line-cta" class="line-cta section">
-    <div class="container">
-      <div class="line-cta-inner">
-        <h2 class="line-cta-heading scroll-animate">公式LINEからご予約・ご注文ができます。</h2>
-        <div class="line-benefits">
-          <div class="line-benefit scroll-animate">
-            <p class="line-benefit-num">特典 01</p>
-            <h3 class="line-benefit-title">店内飲食特典</h3>
-            <p class="line-benefit-desc">ご飯大盛り無料 または 薬味無料（LINE画面提示）</p>
-          </div>
-          <div class="line-benefit scroll-animate">
-            <p class="line-benefit-num">特典 02</p>
-            <h3 class="line-benefit-title">限定クーポン配信</h3>
-            <p class="line-benefit-desc">LINE登録者限定のお得なクーポンを定期配信</p>
-          </div>
-          <div class="line-benefit scroll-animate">
-            <p class="line-benefit-num">特典 03</p>
-            <h3 class="line-benefit-title">スタンプで無料UP</h3>
-            <p class="line-benefit-desc">スタンプ5つで松・竹・梅の鰻の量が1ランクアップ</p>
-          </div>
-        </div>
-        <p class="line-cta-note scroll-animate">登録は無料です。</p>
-        <div class="line-cta-buttons scroll-animate">
-          <a href="#" class="btn-line">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          <a href="https://www.google.com/maps/search/名代+近江鰻処+うな松" target="_blank" rel="noopener noreferrer" class="btn-map">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
             </svg>
-            LINE公式アカウントを追加する
+            Googleマップで確認
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Closing Section -->
-  <section class="closing section">
-    <div class="container">
-      <div class="closing-inner">
-        <h2 class="closing-catch scroll-animate">
-          <span class="accent">350円</span>なのに、ちゃんと鰻。<br>
-          そして、二度美味しい。
+  <!-- LINE CTA -->
+  <section id="line-cta" class="line-cta">
+    <div class="line-cta-inner">
+      <header class="line-cta-header">
+        <p class="line-cta-label scroll-fade">LINE OFFICIAL</p>
+        <h2 class="line-cta-heading scroll-fade">
+          公式LINEから<br>ご予約・ご注文ができます。
         </h2>
-        <p class="closing-text scroll-animate">
-          ご予約・ご注文は、名代 近江鰻処 うな松 公式LINEからどうぞ。
-        </p>
-        <p class="closing-date scroll-animate">2026年2月1日 販売開始</p>
-        <a href="#" class="btn-line scroll-animate">
+      </header>
+      <div class="line-benefits">
+        <div class="line-benefit scroll-fade">
+          <p class="line-benefit-num">01</p>
+          <h3 class="line-benefit-title">店内飲食特典</h3>
+          <p class="line-benefit-desc">ご飯大盛り無料 または<br>薬味無料（LINE画面提示）</p>
+        </div>
+        <div class="line-benefit scroll-fade">
+          <p class="line-benefit-num">02</p>
+          <h3 class="line-benefit-title">限定クーポン配信</h3>
+          <p class="line-benefit-desc">LINE登録者限定の<br>お得なクーポンを定期配信</p>
+        </div>
+        <div class="line-benefit scroll-fade">
+          <p class="line-benefit-num">03</p>
+          <h3 class="line-benefit-title">スタンプで無料UP</h3>
+          <p class="line-benefit-desc">スタンプ5つで松・竹・梅の<br>鰻の量が1ランクアップ</p>
+        </div>
+      </div>
+      <div class="line-cta-action scroll-fade">
+        <p class="line-cta-note">登録は無料です。</p>
+        <a href="#" class="btn-line">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
           </svg>
@@ -1651,9 +1551,33 @@
     </div>
   </section>
 
+  <!-- Closing -->
+  <section class="closing">
+    <div class="closing-inner">
+      <h2 class="closing-catch scroll-fade">
+        <span class="accent">350円</span>なのに、ちゃんと鰻。<br>
+        そして、二度美味しい。
+      </h2>
+      <p class="closing-text scroll-fade">
+        ご予約・ご注文は、公式LINEからどうぞ。
+      </p>
+      <p class="closing-date scroll-fade">2026年2月1日 販売開始</p>
+      <a href="#" class="btn-line scroll-fade">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+        LINE公式アカウントを追加する
+      </a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
-    <p class="footer-logo">名代 近江鰻処 うな松</p>
+    <img src="unamatsu_logo_wh.png" alt="うな松" class="footer-logo">
+    <a href="tel:077-516-4013" class="footer-tel">
+      <span class="footer-tel-number">077-516-4013</span>
+    </a>
+    <span class="footer-tel-time">受付時間 10:00〜14:00</span>
     <p class="footer-address">
       〒525-0059 滋賀県草津市野路8丁目22-6<br>
       営業時間 11:00〜14:00（L.O. 13:30）
@@ -1661,15 +1585,15 @@
     <p class="footer-copy">&copy; 2026 うな松 All rights reserved.</p>
   </footer>
 
-  <!-- Floating CTA (Mobile) -->
+  <!-- Floating CTA -->
   <div class="floating-cta" id="floatingCta">
     <div class="floating-cta-inner">
       <div class="floating-cta-text">
-        <strong>鰻おにぎり 350円</strong>
-        ご予約・ご注文はLINEから
+        <p class="floating-cta-price">350円<span>（税込）</span></p>
+        <p class="floating-cta-sub">鰻おにぎり｜お吸い物付き</p>
       </div>
       <a href="#" class="floating-cta-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
           <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
         </svg>
         LINE登録
@@ -1678,12 +1602,23 @@
   </div>
 
   <script>
-    // Floating CTA visibility
-    const floatingCta = document.getElementById('floatingCta');
+    // Header scroll
+    const header = document.getElementById('header');
     const hero = document.querySelector('.hero');
+    const floatingCta = document.getElementById('floatingCta');
 
-    function updateFloatingCta() {
+    function onScroll() {
+      const scrollY = window.scrollY;
       const heroBottom = hero.getBoundingClientRect().bottom;
+
+      // Header state
+      if (scrollY > 80) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Floating CTA
       if (heroBottom < 0) {
         floatingCta.classList.add('visible');
       } else {
@@ -1691,49 +1626,24 @@
       }
     }
 
-    window.addEventListener('scroll', updateFloatingCta, { passive: true });
-    updateFloatingCta();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // Scroll animations
-    const scrollElements = document.querySelectorAll('.scroll-animate');
+    const scrollElements = document.querySelectorAll('.scroll-fade');
 
-    const elementInView = (el, dividend = 1) => {
-      const elementTop = el.getBoundingClientRect().top;
-      return (
-        elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-      );
-    };
-
-    const displayScrollElement = (element) => {
-      element.classList.add('visible');
-    };
-
-    const handleScrollAnimation = () => {
-      scrollElements.forEach((el) => {
-        if (elementInView(el, 1.25)) {
-          displayScrollElement(el);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
-    };
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
 
-    window.addEventListener('scroll', handleScrollAnimation, { passive: true });
-    handleScrollAnimation();
-
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll > 100) {
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-      } else {
-        header.style.boxShadow = 'none';
-      }
-
-      lastScroll = currentScroll;
-    }, { passive: true });
+    scrollElements.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
