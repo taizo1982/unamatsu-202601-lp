@@ -244,7 +244,7 @@ export default function App() {
                 <li>テイクアウト専用</li>
                 <li>1個からご購入いただけます</li>
               </ul>
-              <p className="spec-note">※数量限定のため、売り切れ次第終了</p>
+              <p className="spec-note">※数量限定のため、事前予約をおすすめします。</p>
             </div>
           </div>
         </div>

@@ -752,12 +752,15 @@
 
 .unamatsu-lp .spec-note {
   margin-top: 32px;
-  padding: 20px;
+  padding: 24px;
   background: rgba(201, 162, 39, 0.1);
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   color: var(--color-gold-light);
   text-align: center;
   letter-spacing: 0.05em;
+  font-weight: 500;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* ==================== SHOP ==================== */
